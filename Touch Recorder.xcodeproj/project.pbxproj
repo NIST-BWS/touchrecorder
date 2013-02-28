@@ -18,6 +18,7 @@
 		0818D78316DF929800BB30DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0818D78216DF929800BB30DF /* Default-568h@2x.png */; };
 		0818D78616DF929800BB30DF /* BWSTRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D78516DF929800BB30DF /* BWSTRViewController.m */; };
 		0818D78916DF929800BB30DF /* BWSTRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0818D78716DF929800BB30DF /* BWSTRViewController.xib */; };
+		0818D79116DF92B500BB30DF /* BWSTRShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79016DF92B500BB30DF /* BWSTRShape.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		0818D78416DF929800BB30DF /* BWSTRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWSTRViewController.h; sourceTree = "<group>"; };
 		0818D78516DF929800BB30DF /* BWSTRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWSTRViewController.m; sourceTree = "<group>"; };
 		0818D78816DF929800BB30DF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BWSTRViewController.xib; sourceTree = "<group>"; };
+		0818D78F16DF92B500BB30DF /* BWSTRShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRShape.h; sourceTree = "<group>"; };
+		0818D79016DF92B500BB30DF /* BWSTRShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRShape.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +90,8 @@
 				0818D77C16DF929800BB30DF /* BWSTRAppDelegate.m */,
 				0818D78416DF929800BB30DF /* BWSTRViewController.h */,
 				0818D78516DF929800BB30DF /* BWSTRViewController.m */,
+				0818D78F16DF92B500BB30DF /* BWSTRShape.h */,
+				0818D79016DF92B500BB30DF /* BWSTRShape.m */,
 				0818D78716DF929800BB30DF /* BWSTRViewController.xib */,
 				0818D77316DF929800BB30DF /* Supporting Files */,
 			);
@@ -177,6 +182,7 @@
 				0818D77916DF929800BB30DF /* main.m in Sources */,
 				0818D77D16DF929800BB30DF /* BWSTRAppDelegate.m in Sources */,
 				0818D78616DF929800BB30DF /* BWSTRViewController.m in Sources */,
+				0818D79116DF92B500BB30DF /* BWSTRShape.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
