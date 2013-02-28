@@ -18,7 +18,14 @@
 		0818D78316DF929800BB30DF /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0818D78216DF929800BB30DF /* Default-568h@2x.png */; };
 		0818D78616DF929800BB30DF /* BWSTRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D78516DF929800BB30DF /* BWSTRViewController.m */; };
 		0818D78916DF929800BB30DF /* BWSTRViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0818D78716DF929800BB30DF /* BWSTRViewController.xib */; };
-		0818D79116DF92B500BB30DF /* BWSTRShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79016DF92B500BB30DF /* BWSTRShape.m */; };
+		0818D7A416DF961C00BB30DF /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79516DF961C00BB30DF /* DDAbstractDatabaseLogger.m */; };
+		0818D7A516DF961C00BB30DF /* DDASLLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79716DF961C00BB30DF /* DDASLLogger.m */; };
+		0818D7A616DF961C00BB30DF /* DDFileLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79916DF961C00BB30DF /* DDFileLogger.m */; };
+		0818D7A716DF961C00BB30DF /* DDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79B16DF961C00BB30DF /* DDLog.m */; };
+		0818D7A816DF961C00BB30DF /* DDTTYLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D79D16DF961C00BB30DF /* DDTTYLogger.m */; };
+		0818D7A916DF961C00BB30DF /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7A016DF961C00BB30DF /* ContextFilterLogFormatter.m */; };
+		0818D7AA16DF961C00BB30DF /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7A216DF961C00BB30DF /* DispatchQueueLogFormatter.m */; };
+		0818D7AE16DF977D00BB30DF /* BWSTRDDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +45,23 @@
 		0818D78416DF929800BB30DF /* BWSTRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BWSTRViewController.h; sourceTree = "<group>"; };
 		0818D78516DF929800BB30DF /* BWSTRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BWSTRViewController.m; sourceTree = "<group>"; };
 		0818D78816DF929800BB30DF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BWSTRViewController.xib; sourceTree = "<group>"; };
-		0818D78F16DF92B500BB30DF /* BWSTRShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRShape.h; sourceTree = "<group>"; };
-		0818D79016DF92B500BB30DF /* BWSTRShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRShape.m; sourceTree = "<group>"; };
+		0818D79416DF961C00BB30DF /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
+		0818D79516DF961C00BB30DF /* DDAbstractDatabaseLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbstractDatabaseLogger.m; sourceTree = "<group>"; };
+		0818D79616DF961C00BB30DF /* DDASLLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDASLLogger.h; sourceTree = "<group>"; };
+		0818D79716DF961C00BB30DF /* DDASLLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDASLLogger.m; sourceTree = "<group>"; };
+		0818D79816DF961C00BB30DF /* DDFileLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFileLogger.h; sourceTree = "<group>"; };
+		0818D79916DF961C00BB30DF /* DDFileLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFileLogger.m; sourceTree = "<group>"; };
+		0818D79A16DF961C00BB30DF /* DDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLog.h; sourceTree = "<group>"; };
+		0818D79B16DF961C00BB30DF /* DDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLog.m; sourceTree = "<group>"; };
+		0818D79C16DF961C00BB30DF /* DDTTYLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTTYLogger.h; sourceTree = "<group>"; };
+		0818D79D16DF961C00BB30DF /* DDTTYLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTTYLogger.m; sourceTree = "<group>"; };
+		0818D79F16DF961C00BB30DF /* ContextFilterLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContextFilterLogFormatter.h; sourceTree = "<group>"; };
+		0818D7A016DF961C00BB30DF /* ContextFilterLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContextFilterLogFormatter.m; sourceTree = "<group>"; };
+		0818D7A116DF961C00BB30DF /* DispatchQueueLogFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DispatchQueueLogFormatter.h; sourceTree = "<group>"; };
+		0818D7A216DF961C00BB30DF /* DispatchQueueLogFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DispatchQueueLogFormatter.m; sourceTree = "<group>"; };
+		0818D7AC16DF975A00BB30DF /* BWSTRDDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRDDLog.h; sourceTree = "<group>"; };
+		0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRDDLog.m; sourceTree = "<group>"; };
+		0818D7AF16DF98B000BB30DF /* BWSTRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,13 +108,15 @@
 		0818D77216DF929800BB30DF /* Touch Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				0818D7AF16DF98B000BB30DF /* BWSTRConstants.h */,
 				0818D77B16DF929800BB30DF /* BWSTRAppDelegate.h */,
 				0818D77C16DF929800BB30DF /* BWSTRAppDelegate.m */,
 				0818D78416DF929800BB30DF /* BWSTRViewController.h */,
 				0818D78516DF929800BB30DF /* BWSTRViewController.m */,
-				0818D78F16DF92B500BB30DF /* BWSTRShape.h */,
-				0818D79016DF92B500BB30DF /* BWSTRShape.m */,
+				0818D7AC16DF975A00BB30DF /* BWSTRDDLog.h */,
+				0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */,
 				0818D78716DF929800BB30DF /* BWSTRViewController.xib */,
+				0818D79216DF95E000BB30DF /* vendor */,
 				0818D77316DF929800BB30DF /* Supporting Files */,
 			);
 			path = "Touch Recorder";
@@ -110,6 +134,44 @@
 				0818D78216DF929800BB30DF /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0818D79216DF95E000BB30DF /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				0818D79316DF961C00BB30DF /* Lumberjack */,
+			);
+			name = vendor;
+			sourceTree = "<group>";
+		};
+		0818D79316DF961C00BB30DF /* Lumberjack */ = {
+			isa = PBXGroup;
+			children = (
+				0818D79416DF961C00BB30DF /* DDAbstractDatabaseLogger.h */,
+				0818D79516DF961C00BB30DF /* DDAbstractDatabaseLogger.m */,
+				0818D79616DF961C00BB30DF /* DDASLLogger.h */,
+				0818D79716DF961C00BB30DF /* DDASLLogger.m */,
+				0818D79816DF961C00BB30DF /* DDFileLogger.h */,
+				0818D79916DF961C00BB30DF /* DDFileLogger.m */,
+				0818D79A16DF961C00BB30DF /* DDLog.h */,
+				0818D79B16DF961C00BB30DF /* DDLog.m */,
+				0818D79C16DF961C00BB30DF /* DDTTYLogger.h */,
+				0818D79D16DF961C00BB30DF /* DDTTYLogger.m */,
+				0818D79E16DF961C00BB30DF /* Extensions */,
+			);
+			name = Lumberjack;
+			path = vendor/CocoaLumberjack/Lumberjack;
+			sourceTree = "<group>";
+		};
+		0818D79E16DF961C00BB30DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0818D79F16DF961C00BB30DF /* ContextFilterLogFormatter.h */,
+				0818D7A016DF961C00BB30DF /* ContextFilterLogFormatter.m */,
+				0818D7A116DF961C00BB30DF /* DispatchQueueLogFormatter.h */,
+				0818D7A216DF961C00BB30DF /* DispatchQueueLogFormatter.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,7 +244,14 @@
 				0818D77916DF929800BB30DF /* main.m in Sources */,
 				0818D77D16DF929800BB30DF /* BWSTRAppDelegate.m in Sources */,
 				0818D78616DF929800BB30DF /* BWSTRViewController.m in Sources */,
-				0818D79116DF92B500BB30DF /* BWSTRShape.m in Sources */,
+				0818D7A416DF961C00BB30DF /* DDAbstractDatabaseLogger.m in Sources */,
+				0818D7A516DF961C00BB30DF /* DDASLLogger.m in Sources */,
+				0818D7A616DF961C00BB30DF /* DDFileLogger.m in Sources */,
+				0818D7A716DF961C00BB30DF /* DDLog.m in Sources */,
+				0818D7A816DF961C00BB30DF /* DDTTYLogger.m in Sources */,
+				0818D7A916DF961C00BB30DF /* ContextFilterLogFormatter.m in Sources */,
+				0818D7AA16DF961C00BB30DF /* DispatchQueueLogFormatter.m in Sources */,
+				0818D7AE16DF977D00BB30DF /* BWSTRDDLog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
