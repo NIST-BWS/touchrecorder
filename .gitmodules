@@ -1,0 +1,3 @@
+[submodule "Touch Recorder/vendor/CocoaLumberjack"]
+	path = Touch Recorder/vendor/CocoaLumberjack
+	url = git://github.com/robbiehanson/CocoaLumberjack.git
