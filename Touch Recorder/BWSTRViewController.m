@@ -10,6 +10,7 @@
 
 #import "BWSTRCircle.h"
 #import "BWSTRSquare.h"
+#import "BWSTRDDLog.h"
 
 #import "NSMutableArray+BWSTRUtilities.h"
 #import "UIView+Quadrants.h"
@@ -21,11 +22,14 @@
 
 @end
 
+static int ddLogLevel;
+
 @implementation BWSTRViewController
 
 - (void)viewDidLoad
 {
 	[super viewDidLoad];
+	[self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)]];
 	
 	self.rows = 4;
 	self.columns = 3;
@@ -37,6 +41,13 @@
 	for (NSUInteger row = 1; row <= self.rows; row++)
 		for (NSUInteger column = 1; column <= self.columns; column++)
 			[self insertShape:[[BWSTRSquare alloc] init] inRow:row column:column];
+}
+
+#pragma mark - Tap Detection
+
+- (void)tapRecognized:(UITapGestureRecognizer *)recognizer
+{
+	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: No", NSStringFromCGPoint([recognizer locationInView:self.view]), NSStringFromCGPoint([recognizer locationInView:self.view]));
 }
 
 #pragma mark - Shape Insertion
