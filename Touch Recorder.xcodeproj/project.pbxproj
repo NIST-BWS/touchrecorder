@@ -30,6 +30,8 @@
 		0818D7B516DFAC8A00BB30DF /* BWSTRCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7B416DFAC8A00BB30DF /* BWSTRCircle.m */; };
 		0818D7B816DFB06900BB30DF /* UIColor+BWSTRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7B716DFB06800BB30DF /* UIColor+BWSTRUtilities.m */; };
 		0818D7BB16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7BA16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m */; };
+		0818D7BE16E0E6B100BB30DF /* UIView+Quadrants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7BD16E0E6B000BB30DF /* UIView+Quadrants.m */; };
+		0818D7C116E0EF3000BB30DF /* BWSTRSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C016E0EF2F00BB30DF /* BWSTRSquare.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,10 @@
 		0818D7B716DFB06800BB30DF /* UIColor+BWSTRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BWSTRUtilities.m"; sourceTree = "<group>"; };
 		0818D7B916E0E11F00BB30DF /* NSMutableArray+BWSTRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+BWSTRUtilities.h"; sourceTree = "<group>"; };
 		0818D7BA16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+BWSTRUtilities.m"; sourceTree = "<group>"; };
+		0818D7BC16E0E6B000BB30DF /* UIView+Quadrants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Quadrants.h"; sourceTree = "<group>"; };
+		0818D7BD16E0E6B000BB30DF /* UIView+Quadrants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Quadrants.m"; sourceTree = "<group>"; };
+		0818D7BF16E0EF2F00BB30DF /* BWSTRSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRSquare.h; sourceTree = "<group>"; };
+		0818D7C016E0EF2F00BB30DF /* BWSTRSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRSquare.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +135,16 @@
 				0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */,
 				0818D7B616DFB06800BB30DF /* UIColor+BWSTRUtilities.h */,
 				0818D7B716DFB06800BB30DF /* UIColor+BWSTRUtilities.m */,
+				0818D7BC16E0E6B000BB30DF /* UIView+Quadrants.h */,
+				0818D7BD16E0E6B000BB30DF /* UIView+Quadrants.m */,
 				0818D7B916E0E11F00BB30DF /* NSMutableArray+BWSTRUtilities.h */,
 				0818D7BA16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m */,
 				0818D7B016DFA4F700BB30DF /* BWSTRShape.h */,
 				0818D7B116DFA4F700BB30DF /* BWSTRShape.m */,
 				0818D7B316DFAC8A00BB30DF /* BWSTRCircle.h */,
 				0818D7B416DFAC8A00BB30DF /* BWSTRCircle.m */,
+				0818D7BF16E0EF2F00BB30DF /* BWSTRSquare.h */,
+				0818D7C016E0EF2F00BB30DF /* BWSTRSquare.m */,
 				0818D78716DF929800BB30DF /* BWSTRViewController.xib */,
 				0818D79216DF95E000BB30DF /* vendor */,
 				0818D77316DF929800BB30DF /* Supporting Files */,
@@ -276,6 +286,8 @@
 				0818D7B516DFAC8A00BB30DF /* BWSTRCircle.m in Sources */,
 				0818D7B816DFB06900BB30DF /* UIColor+BWSTRUtilities.m in Sources */,
 				0818D7BB16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m in Sources */,
+				0818D7BE16E0E6B100BB30DF /* UIView+Quadrants.m in Sources */,
+				0818D7C116E0EF3000BB30DF /* BWSTRSquare.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
