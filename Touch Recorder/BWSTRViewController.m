@@ -11,6 +11,7 @@
 #import "BWSTRCircle.h"
 #import "BWSTRSquare.h"
 #import "BWSTRDDLog.h"
+#import "BWSTRConstants.h"
 
 #import "NSMutableArray+BWSTRUtilities.h"
 #import "UIView+Quadrants.h"
@@ -41,6 +42,20 @@ static int ddLogLevel;
 	for (NSUInteger row = 1; row <= self.rows; row++)
 		for (NSUInteger column = 1; column <= self.columns; column++)
 			[self insertShape:[[BWSTRSquare alloc] init] inRow:row column:column];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeHit:) name:kBWSTRNotificationShapeHit object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationShapeHit object:nil];
+	
+	[super viewWillDisappear:animated];
 }
 
 #pragma mark - Tap Detection
@@ -78,6 +93,13 @@ static int ddLogLevel;
 #pragma mark - Interface Element Actions
 
 - (IBAction)nextButtonPressed:(id)sender
+{
+	
+}
+
+#pragma mark - Notification Handlers
+
+- (void)shapeHit:(NSNotification *)notification
 {
 	
 }

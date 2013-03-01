@@ -31,4 +31,9 @@ static const BOOL kBWSTRSettingsVerboseLoggingEnabledValueDefault = YES;
  */
 static NSString * const kBWSTRViewNib = @"BWSTRViewController";
 
+/*
+ * Notifications.
+ */
+static NSString * const kBWSTRNotificationShapeHit = @"kBWSTRNotificationShapeHit";
+
 #endif /* __BWSTRCONSTANTS_H__ */

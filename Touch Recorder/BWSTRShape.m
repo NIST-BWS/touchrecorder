@@ -8,6 +8,7 @@
  * about its quality, reliability, or any other characteristic.
  */
 
+#import "BWSTRConstants.h"
 #import "BWSTRDDLog.h"
 
 #import "BWSTRShape.h"
@@ -55,6 +56,8 @@ static int ddLogLevel;
 {
 	BOOL tappedWithin = [self touchedWithinShapeWithTouch:[tapRecognizer locationInView:self]];
 	DDLogBWSTRTouchLGHM([tapRecognizer locationInView:self], tappedWithin);
+	if (tappedWithin)
+		[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationShapeHit object:nil];
 }
 
 @end
