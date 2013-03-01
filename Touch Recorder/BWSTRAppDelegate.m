@@ -44,7 +44,8 @@
 	/* Log to file */
 	DDFileLogger *fileLogger = nil;
 #if TARGET_OS_IPHONE
-	NSString *documentsDirectory = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = ([paths count] > 0) ? [paths objectAtIndex:0] : nil;
 	fileLogger = [[DDFileLogger alloc] initWithLogFileManager:[[DDLogFileManagerDefault alloc] initWithLogsDirectory:documentsDirectory]];
 #else
 	fileLogger = [[DDFileLogger alloc] init];
