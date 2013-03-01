@@ -8,9 +8,6 @@
  * about its quality, reliability, or any other characteristic.
  */
 
-#import "UIColor+BWSTRUtilities.h"
-
-
 #import "BWSTRSquare.h"
 
 @implementation BWSTRSquare
@@ -19,17 +16,11 @@
 {
 	[super drawRect:rect];
 	
-	CGFloat red, green, blue, alpha;
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSetShouldAntialias(context, true);
 
-	if ([self.foregroundColor getRed:&red green:&green blue:&blue alpha:&alpha]) {
-		CGContextSetRGBFillColor(context, red, green, blue, alpha);
-		CGContextSetRGBStrokeColor(context, red, green, blue, alpha);
-	} else {
-		CGContextSetRGBFillColor(context, 1, 1, 1, 1);
-		CGContextSetRGBStrokeColor(context, 1, 1, 1, 1);
-	}
+	CGContextSetFillColorWithColor(context, [self.foregroundColor CGColor]);
+	CGContextSetStrokeColorWithColor(context, [self.foregroundColor CGColor]);
 	CGContextFillRect(context, rect);
 	
 	CGContextDrawPath(context, kCGPathFillStroke);
