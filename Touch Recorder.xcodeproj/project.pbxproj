@@ -26,6 +26,9 @@
 		0818D7A916DF961C00BB30DF /* ContextFilterLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7A016DF961C00BB30DF /* ContextFilterLogFormatter.m */; };
 		0818D7AA16DF961C00BB30DF /* DispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7A216DF961C00BB30DF /* DispatchQueueLogFormatter.m */; };
 		0818D7AE16DF977D00BB30DF /* BWSTRDDLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */; };
+		0818D7B216DFA4F800BB30DF /* BWSTRShape.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7B116DFA4F700BB30DF /* BWSTRShape.m */; };
+		0818D7B516DFAC8A00BB30DF /* BWSTRCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7B416DFAC8A00BB30DF /* BWSTRCircle.m */; };
+		0818D7B816DFB06900BB30DF /* UIColor+BWSTRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7B716DFB06800BB30DF /* UIColor+BWSTRUtilities.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +65,12 @@
 		0818D7AC16DF975A00BB30DF /* BWSTRDDLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRDDLog.h; sourceTree = "<group>"; };
 		0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRDDLog.m; sourceTree = "<group>"; };
 		0818D7AF16DF98B000BB30DF /* BWSTRConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRConstants.h; sourceTree = "<group>"; };
+		0818D7B016DFA4F700BB30DF /* BWSTRShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRShape.h; sourceTree = "<group>"; };
+		0818D7B116DFA4F700BB30DF /* BWSTRShape.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRShape.m; sourceTree = "<group>"; };
+		0818D7B316DFAC8A00BB30DF /* BWSTRCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRCircle.h; sourceTree = "<group>"; };
+		0818D7B416DFAC8A00BB30DF /* BWSTRCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRCircle.m; sourceTree = "<group>"; };
+		0818D7B616DFB06800BB30DF /* UIColor+BWSTRUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BWSTRUtilities.h"; sourceTree = "<group>"; };
+		0818D7B716DFB06800BB30DF /* UIColor+BWSTRUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BWSTRUtilities.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +124,12 @@
 				0818D78516DF929800BB30DF /* BWSTRViewController.m */,
 				0818D7AC16DF975A00BB30DF /* BWSTRDDLog.h */,
 				0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */,
+				0818D7B616DFB06800BB30DF /* UIColor+BWSTRUtilities.h */,
+				0818D7B716DFB06800BB30DF /* UIColor+BWSTRUtilities.m */,
+				0818D7B016DFA4F700BB30DF /* BWSTRShape.h */,
+				0818D7B116DFA4F700BB30DF /* BWSTRShape.m */,
+				0818D7B316DFAC8A00BB30DF /* BWSTRCircle.h */,
+				0818D7B416DFAC8A00BB30DF /* BWSTRCircle.m */,
 				0818D78716DF929800BB30DF /* BWSTRViewController.xib */,
 				0818D79216DF95E000BB30DF /* vendor */,
 				0818D77316DF929800BB30DF /* Supporting Files */,
@@ -252,6 +267,9 @@
 				0818D7A916DF961C00BB30DF /* ContextFilterLogFormatter.m in Sources */,
 				0818D7AA16DF961C00BB30DF /* DispatchQueueLogFormatter.m in Sources */,
 				0818D7AE16DF977D00BB30DF /* BWSTRDDLog.m in Sources */,
+				0818D7B216DFA4F800BB30DF /* BWSTRShape.m in Sources */,
+				0818D7B516DFAC8A00BB30DF /* BWSTRCircle.m in Sources */,
+				0818D7B816DFB06900BB30DF /* UIColor+BWSTRUtilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +359,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Touch Recorder/Touch Recorder-Prefix.pch";
 				INFOPLIST_FILE = "Touch Recorder/Touch Recorder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -352,6 +371,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Touch Recorder/Touch Recorder-Prefix.pch";
 				INFOPLIST_FILE = "Touch Recorder/Touch Recorder-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
