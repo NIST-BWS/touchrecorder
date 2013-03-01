@@ -34,7 +34,14 @@
 #define DDLogBWSTRTouch(frmt, ...)	REFRESH_DD_BWSTR_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_TOUCH, 0, ([NSString stringWithFormat:@"<TL> %@", frmt]), ##__VA_ARGS__)
 /** Logs the kitchen sink */
 #define DDLogBWSVerbose(frmt, ...)	REFRESH_DD_BWS_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_VERBOSE, 0, ([NSString stringWithFormat:@"<VL> %@", frmt]), ##__VA_ARGS__)
+/** Logs the kitchen sink with no arguments */
+#define DDLogBWSVerboseS(message)	REFRESH_DD_BWS_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_VERBOSE, 0, ([NSString stringWithFormat:@"<VL> %@", message]), ##__VA_ARGS__)
 
+/*
+ * Specializations
+ */
+/** Logs a tap (local, global, hit/miss) */
+#define DDLogBWSTRTouchLGHM(localPoint, hitMissBool)	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: %@", NSStringFromCGPoint(localPoint), NSStringFromCGPoint([self convertPoint:localPoint toView:self.superview]), hitMissBool ? @"Yes" : @"No")
 
 @interface BWSTRDDLog : NSObject
 
@@ -44,8 +51,5 @@
 + (void)setDefaultLoggingLevels;
 
 @end
-
-/** Log level */
-static int ddLogLevel;
 
 #endif /* __BWSTRDDLOG_H__ */
