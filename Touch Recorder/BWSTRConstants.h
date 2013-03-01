@@ -30,6 +30,7 @@ static const BOOL kBWSTRSettingsVerboseLoggingEnabledValueDefault = YES;
  * NIBs
  */
 static NSString * const kBWSTRViewNib = @"BWSTRViewController";
+static NSString * const kBWSTRNewTestView = @"BWSTRNewTestView";
 
 /*
  * Notifications.

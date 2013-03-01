@@ -31,6 +31,8 @@
 		0818D7BB16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7BA16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m */; };
 		0818D7BE16E0E6B100BB30DF /* UIView+Quadrants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7BD16E0E6B000BB30DF /* UIView+Quadrants.m */; };
 		0818D7C116E0EF3000BB30DF /* BWSTRSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C016E0EF2F00BB30DF /* BWSTRSquare.m */; };
+		0818D7C416E11E1900BB30DF /* BWSTRNewTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */; };
+		0818D7C616E11E2900BB30DF /* BWSTRNewTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,9 @@
 		0818D7BD16E0E6B000BB30DF /* UIView+Quadrants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Quadrants.m"; sourceTree = "<group>"; };
 		0818D7BF16E0EF2F00BB30DF /* BWSTRSquare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRSquare.h; sourceTree = "<group>"; };
 		0818D7C016E0EF2F00BB30DF /* BWSTRSquare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRSquare.m; sourceTree = "<group>"; };
+		0818D7C216E11E1800BB30DF /* BWSTRNewTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRNewTestViewController.h; sourceTree = "<group>"; };
+		0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRNewTestViewController.m; sourceTree = "<group>"; };
+		0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BWSTRNewTestView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,9 @@
 				0818D77C16DF929800BB30DF /* BWSTRAppDelegate.m */,
 				0818D78416DF929800BB30DF /* BWSTRViewController.h */,
 				0818D78516DF929800BB30DF /* BWSTRViewController.m */,
+				0818D7C216E11E1800BB30DF /* BWSTRNewTestViewController.h */,
+				0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */,
+				0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */,
 				0818D7AC16DF975A00BB30DF /* BWSTRDDLog.h */,
 				0818D7AD16DF977D00BB30DF /* BWSTRDDLog.m */,
 				0818D7BC16E0E6B000BB30DF /* UIView+Quadrants.h */,
@@ -256,6 +264,7 @@
 				0818D78116DF929800BB30DF /* Default@2x.png in Resources */,
 				0818D78316DF929800BB30DF /* Default-568h@2x.png in Resources */,
 				0818D78916DF929800BB30DF /* BWSTRViewController.xib in Resources */,
+				0818D7C616E11E2900BB30DF /* BWSTRNewTestView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +291,7 @@
 				0818D7BB16E0E12000BB30DF /* NSMutableArray+BWSTRUtilities.m in Sources */,
 				0818D7BE16E0E6B100BB30DF /* UIView+Quadrants.m in Sources */,
 				0818D7C116E0EF3000BB30DF /* BWSTRSquare.m in Sources */,
+				0818D7C416E11E1900BB30DF /* BWSTRNewTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
