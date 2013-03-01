@@ -21,6 +21,7 @@
 @property (nonatomic, strong) UIColor *shapeForegroundColor;
 @property (nonatomic, strong) UIColor *shapeBackgroundColor;
 
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
 #pragma mark - Shape Insertion
 
@@ -48,5 +49,8 @@
  */
 - (void)insertShape:(BWSTRShape *)shape inRow:(NSUInteger)row column:(NSUInteger)column;
 
+#pragma mark - Interface Element Actions
+
+- (IBAction)nextButtonPressed:(id)sender;
 
 @end
