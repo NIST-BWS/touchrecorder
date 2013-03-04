@@ -33,9 +33,7 @@
 /** Logs information about taps */
 #define DDLogBWSTRTouch(frmt, ...)	REFRESH_DD_BWSTR_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_TOUCH, 0, ([NSString stringWithFormat:@"<TL> %@", frmt]), ##__VA_ARGS__)
 /** Logs the kitchen sink */
-#define DDLogBWSVerbose(frmt, ...)	REFRESH_DD_BWS_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_VERBOSE, 0, ([NSString stringWithFormat:@"<VL> %@", frmt]), ##__VA_ARGS__)
-/** Logs the kitchen sink with no arguments */
-#define DDLogBWSVerboseS(message)	REFRESH_DD_BWS_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_VERBOSE, 0, ([NSString stringWithFormat:@"<VL> %@", message]), ##__VA_ARGS__)
+#define DDLogBWSTRVerbose(frmt, ...)	REFRESH_DD_BWSTR_LOG_PREFS; ASYNC_LOG_OBJC_MAYBE(ddLogLevel, LOG_FLAG_BWSTR_VERBOSE, 0, ([NSString stringWithFormat:@"<VL> %@", frmt]), ##__VA_ARGS__)
 
 /*
  * Specializations
