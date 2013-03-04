@@ -91,8 +91,8 @@ static int ddLogLevel;
 	if (self.quadrants == nil)
 		return;
 	
-	[shape setBackgroundColor:self.testProperties.shapeBackgroundColor];
-	[shape setForegroundColor:self.testProperties.shapeForegroundColor];
+	[shape setBackgroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeBackgroundColor]];
+	[shape setForegroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeForegroundColor]];
 	
 	CGRect quadrant = [[self.quadrants objectAtIndex:quadrantNumber - 1] CGRectValue];
 	[shape setFrame:CGRectMake(quadrant.origin.x, quadrant.origin.y, self.testProperties.shapeSize, self.testProperties.shapeSize)];
@@ -119,7 +119,7 @@ static int ddLogLevel;
 	}
 	
 	/* Set the background color while we're here, so it's not jarring */
-	[self.view setBackgroundColor:self.testProperties.shapeBackgroundColor];
+	[self.view setBackgroundColor:[BWSTRConstants colorForBWSTRColor: self.testProperties.shapeBackgroundColor]];
 	
 	/* Update the number of quadrants */
 	self.quadrants = [self.view quadrantsWithNumberOfRows:self.testProperties.numberOfRows columns:self.testProperties.numberOfColumns];

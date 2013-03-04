@@ -51,11 +51,11 @@ static int ddLogLevel;
 	/* Initialize the shape object */
 	_shape = [BWSTRShapeFactory shapeWithShapeName:self.testProperties.shapeName
 						 frame:CGRectMake(0, 0, self.testProperties.shapeSize, self.testProperties.shapeSize)];
-	[_shape setForegroundColor:self.testProperties.shapeForegroundColor];
-	[_shape setBackgroundColor:self.testProperties.shapeBackgroundColor];
+	[_shape setForegroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeForegroundColor]];
+	[_shape setBackgroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeBackgroundColor]];
 	
 	/* Make the view controller background color match the shape background color */
-	[_testViewController.view setBackgroundColor:self.testProperties.shapeBackgroundColor];
+	[_testViewController.view setBackgroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeBackgroundColor]];
 	
 	/* Listen for hitting shapes */
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeHit:) name:kBWSTRNotificationShapeHit object:nil];

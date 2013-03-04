@@ -136,8 +136,8 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 	testProperties.dominantHand = self.dominantHand.selectedSegmentIndex;
 	testProperties.shapeSize = [self.shapeSizeField.text integerValue];
 	testProperties.shapeName = [self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionShape];
-	testProperties.shapeBackgroundColor = [BWSTRConstants colorForBWSTRColor:[self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionBackgroundColor]];
-	testProperties.shapeForegroundColor = [BWSTRConstants colorForBWSTRColor:[self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor]];
+	testProperties.shapeBackgroundColor = [self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionBackgroundColor];
+	testProperties.shapeForegroundColor = [self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationTestPropertiesSet
 							    object:self

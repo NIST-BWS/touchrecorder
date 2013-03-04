@@ -21,7 +21,7 @@
 @property (nonatomic, assign) NSUInteger participantID;
 @property (nonatomic, assign) BWSTRShapeName shapeName;
 @property (nonatomic, assign) BWSTRDominantHand dominantHand;
-@property (nonatomic, strong) UIColor *shapeForegroundColor;
-@property (nonatomic, strong) UIColor *shapeBackgroundColor;
+@property (nonatomic, assign) BWSTRColor shapeForegroundColor;
+@property (nonatomic, assign) BWSTRColor shapeBackgroundColor;
 
 @end
