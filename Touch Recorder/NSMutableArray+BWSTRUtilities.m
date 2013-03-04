@@ -12,11 +12,14 @@
 
 @implementation NSMutableArray (BWSTRUtilities)
 
-- (void)shuffle
+- (NSMutableArray *)shuffle
 {
 	NSUInteger count = [self count];
 	for (NSUInteger i = 0; i < count; i++)
 		[self exchangeObjectAtIndex:i withObjectAtIndex:(arc4random() % (count - i)) + i];
+	
+	/* Allow chaining */
+	return (self);
 }
 
 + (NSMutableArray *)numberArrayWithStartingNumber:(NSInteger)startingNumber endingNumber:(NSInteger)endingNumber;

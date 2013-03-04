@@ -15,7 +15,12 @@
 + (NSMutableArray *)numberArrayWithStartingNumber:(NSInteger)startingNumber endingNumber:(NSInteger)endingNumber;
 + (NSMutableArray *)numberArrayWithStartingNumber:(NSInteger)startingNumber increment:(NSUInteger)increment iterations:(NSUInteger)iterations;
 
-/** Shuffle the indicies of an array */
-- (void)shuffle;
+/**
+ * @brief
+ * Shuffle the indicies of an array in place.
+ *
+ * @return Pointer to shuffled array.
+ */
+- (NSMutableArray *)shuffle;
 
 @end
