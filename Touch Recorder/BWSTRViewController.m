@@ -23,7 +23,8 @@
 @interface BWSTRViewController ()
 
 @property (nonatomic, strong) NSArray *quadrants;
-@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *backgroundTapRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer *nextButtonTapRecognizer;
 @property (nonatomic, strong) BWSTRTestProperties *testProperties;
 @property (nonatomic, strong) BWSTRTest *test;
 
@@ -44,9 +45,16 @@ static int ddLogLevel;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testFinished:) name:kBWSTRNotificationTestFinished object:nil];
 	
 	/* Setup gesture recognizers */
-	if (self.tapGestureRecognizer == nil)
-		self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
-	[self.view addGestureRecognizer:self.tapGestureRecognizer];
+	if (self.backgroundTapRecognizer == nil) {
+		self.backgroundTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backgroundTapRecognized:)];
+		[self.backgroundTapRecognizer setCancelsTouchesInView:NO];
+	}
+	[self.view addGestureRecognizer:self.backgroundTapRecognizer];
+	if (self.nextButtonTapRecognizer == nil) {
+		self.nextButtonTapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(nextButtonTapRecognized:)];
+		[self.nextButtonTapRecognizer setCancelsTouchesInView:NO];
+	}
+	[self.nextButton addGestureRecognizer:self.nextButtonTapRecognizer];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -56,7 +64,8 @@ static int ddLogLevel;
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationTestFinished object:nil];
 	
 	/* Tear down gesture recognizers */
-	[self.view removeGestureRecognizer:self.tapGestureRecognizer];
+	[self.view removeGestureRecognizer:self.backgroundTapRecognizer];
+	[self.nextButton removeGestureRecognizer:self.nextButtonTapRecognizer];
 	
 	[super viewWillDisappear:animated];
 }
@@ -70,9 +79,14 @@ static int ddLogLevel;
 
 #pragma mark - Tap Detection
 
-- (void)tapRecognized:(UITapGestureRecognizer *)recognizer
+- (void)backgroundTapRecognized:(UITapGestureRecognizer *)recognizer
 {
 	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: No", NSStringFromCGPoint([recognizer locationInView:self.view]), NSStringFromCGPoint([recognizer locationInView:self.view]));
+}
+
+- (void)nextButtonTapRecognized:(UITapGestureRecognizer *)recognizer
+{
+	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: NEXT", NSStringFromCGPoint([recognizer locationInView:self.view]), NSStringFromCGPoint([recognizer locationInView:nil]));
 }
 
 #pragma mark - Shape Insertion
