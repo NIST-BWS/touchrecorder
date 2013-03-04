@@ -86,7 +86,7 @@ static int ddLogLevel;
 
 - (void)nextButtonTapRecognized:(UITapGestureRecognizer *)recognizer
 {
-	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: NEXT", NSStringFromCGPoint([recognizer locationInView:self.view]), NSStringFromCGPoint([recognizer locationInView:nil]));
+	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: NEXT", NSStringFromCGPoint([recognizer locationInView:self.nextButton]), NSStringFromCGPoint([recognizer locationInView:self.view]));
 }
 
 #pragma mark - Shape Insertion
