@@ -18,7 +18,7 @@
 	NSUInteger widthOfQuadrant = CGRectGetWidth(wholeFrame) / columns;
 	NSUInteger heightOfQuadrant = CGRectGetHeight(wholeFrame) / rows;
 	NSUInteger minX = CGRectGetMinX(wholeFrame);
-	NSUInteger minY = CGRectGetMinX(wholeFrame);
+	NSUInteger minY = CGRectGetMinY(wholeFrame);
 	
 	NSMutableArray *quadrants = [[NSMutableArray alloc] initWithCapacity:(rows * columns)];
 	for (NSUInteger row = 0; row < rows; row++)
