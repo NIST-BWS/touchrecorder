@@ -79,6 +79,7 @@ static int ddLogLevel;
 	DDLogBWSTRVerbose(@"%@", @"--------------------------------------------------------------------------------");
 	DDLogBWSTRVerbose(@"%@", [self.testProperties csvDescription]);
 	
+	[[self.testViewController nextButton] setFrame:[self buttonPosition]];
 	[[self.testViewController nextButton] setHidden:NO];
 	[[self.testViewController nextButton] setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];
 }
@@ -124,6 +125,7 @@ static int ddLogLevel;
 	
 	/* Show the next button */
 	[[self.testViewController nextButton] setTitle:NSLocalizedString(@"Next", nil) forState:UIControlStateNormal];
+	[[self.testViewController nextButton] setFrame:[self buttonPosition]];
 	[[self.testViewController nextButton] setHidden:NO];
 }
 
@@ -138,6 +140,23 @@ static int ddLogLevel;
 		[randomization addObjectsFromArray:quadrants];
 
 	_quadrantOrder = [[NSArray alloc] initWithArray:[randomization shuffle]];
+}
+
+- (CGRect)buttonPosition
+{
+	static const CGFloat padding = 20;
+	
+	switch (self.testProperties.dominantHand) {
+		case kBWSTRDominantHandLeft:
+			return (CGRectMake(padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)));
+		case kBWSTRDominantHandRight:
+			return (CGRectMake(CGRectGetWidth(self.testViewController.view.frame) - CGRectGetWidth(self.testViewController.nextButton.frame) - padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)));
+		case kBWSTRDominantHandBoth:
+			/* Alternate */
+			return ((_iteration % 2 == 0) ?
+				CGRectMake(padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)) :
+				CGRectMake(CGRectGetWidth(self.testViewController.view.frame) - CGRectGetWidth(self.testViewController.nextButton.frame) - padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)));
+	}
 }
 
 #pragma mark - Destruction
