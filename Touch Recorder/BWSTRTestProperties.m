@@ -44,7 +44,7 @@
 	[ret appendFormat:@"%u,", self.numberOfRows];
 	[ret appendFormat:@"%u,", self.numberOfColumns];
 	[ret appendFormat:@"%c,", UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation) ? 'L' : 'P'];
-	[ret appendFormat:@"%u", self.shapeName];
+	[ret appendFormat:@"%u,", self.shapeName];
 	[ret appendFormat:@"%u,", self.shapeSize];
 	[ret appendFormat:@"%u,", self.shapeForegroundColor];
 	[ret appendFormat:@"%u", self.shapeBackgroundColor];
