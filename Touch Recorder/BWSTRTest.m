@@ -77,7 +77,7 @@ static int ddLogLevel;
 	[self randomizeQuadrants];
 	
 	DDLogBWSTRVerbose(@"%@", @"--------------------------------------------------------------------------------");
-	DDLogBWSTRVerbose(@"%@", [self.testProperties description]);
+	DDLogBWSTRVerbose(@"%@", [self.testProperties csvDescription]);
 	
 	[[self.testViewController nextButton] setHidden:NO];
 	[[self.testViewController nextButton] setTitle:NSLocalizedString(@"Start", nil) forState:UIControlStateNormal];

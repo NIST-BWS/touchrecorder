@@ -24,4 +24,16 @@
 @property (nonatomic, assign) BWSTRColor shapeForegroundColor;
 @property (nonatomic, assign) BWSTRColor shapeBackgroundColor;
 
+/** @return Verbose description */
+- (NSString *)description;
+
+/**
+ * @return
+ * CSV description in the format:
+ * participaneID,domaintHand,numTrials,numRows,numCols,orientation,shape,size,foregroundColor,backgroundColor
+ *  - where shapes and colors are defined by their enumerations in BWSTRConstants (0-based)
+ *  - where orientation is 'L'andscape or 'P'ortrait.
+ */
+- (NSString *)csvDescription;
+
 @end
