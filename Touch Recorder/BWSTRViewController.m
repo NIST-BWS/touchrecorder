@@ -89,7 +89,7 @@ static int ddLogLevel;
 {
 	NSAssert(quadrantNumber <= (self.testProperties.numberOfRows * self.testProperties.numberOfColumns), @"Invalid quadrant (%u vs %u)", quadrantNumber, (self.testProperties.numberOfRows * self.testProperties.numberOfColumns) - 1);
 	if (self.quadrants == nil)
-		self.quadrants = [self.view quadrantsWithNumberOfRows:self.testProperties.numberOfRows columns:self.testProperties.numberOfColumns];
+		return;
 	
 	[shape setBackgroundColor:self.testProperties.shapeBackgroundColor];
 	[shape setForegroundColor:self.testProperties.shapeForegroundColor];
@@ -112,7 +112,6 @@ static int ddLogLevel;
 
 - (void)testPropertiesUpdated:(NSNotification *)notification
 {
-	/* TODO: Don't need a copy of the testProperties in the ViewController. */
 	self.testProperties = [notification.userInfo objectForKey:kBWSTRNotificationTestPropertiesSetTestPropertiesKey];
 	if (self.testProperties == nil) {
 		DDLogBWSTRVerbose(@"%@", @"testProperties is nil, not starting evaluation");
@@ -121,6 +120,9 @@ static int ddLogLevel;
 	
 	/* Set the background color while we're here, so it's not jarring */
 	[self.view setBackgroundColor:self.testProperties.shapeBackgroundColor];
+	
+	/* Update the number of quadrants */
+	self.quadrants = [self.view quadrantsWithNumberOfRows:self.testProperties.numberOfRows columns:self.testProperties.numberOfColumns];
 	
 	/* Start the evaluation */
 	self.test = [[BWSTRTest alloc] initWithTestProperties:self.testProperties inTestViewController:self];
