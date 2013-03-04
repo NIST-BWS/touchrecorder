@@ -15,9 +15,6 @@
 
 @interface BWSTRViewController : UIViewController
 
-/** Whether or not a test is in progress */
-@property (nonatomic, assign, readonly) BOOL testInProgress;
-
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
 
 #pragma mark - Shape Insertion

@@ -44,6 +44,8 @@ static NSString * const kBWSTRNewTestView = @"BWSTRNewTestView";
 static NSString * const kBWSTRNotificationShapeHit = @"kBWSTRNotificationShapeHit";
 /** Test properties have been set and are attached */
 static NSString * const kBWSTRNotificationTestPropertiesSet = @"kBWSTRNotificationTestPropertiesSet";
+/** Test is finished */
+static NSString * const kBWSTRNotificationTestFinished = @"kBWSTRNotificationTestFinished";
 
 /*
  * Notification userInfo keys.

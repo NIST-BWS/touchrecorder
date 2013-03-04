@@ -35,6 +35,8 @@
 		0818D7C616E11E2900BB30DF /* BWSTRNewTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */; };
 		0818D7C916E1427B00BB30DF /* BWSTRTestProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C816E1427A00BB30DF /* BWSTRTestProperties.m */; };
 		0818D7CB16E4DEDA00BB30DF /* BWSTRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7CA16E4DED900BB30DF /* BWSTRConstants.m */; };
+		0818D7CE16E4F67C00BB30DF /* BWSTRTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7CD16E4F67B00BB30DF /* BWSTRTest.m */; };
+		0818D7D116E4FCCF00BB30DF /* BWSTRShapeFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7D016E4FCCE00BB30DF /* BWSTRShapeFactory.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +89,10 @@
 		0818D7C716E1427900BB30DF /* BWSTRTestProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRTestProperties.h; sourceTree = "<group>"; };
 		0818D7C816E1427A00BB30DF /* BWSTRTestProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRTestProperties.m; sourceTree = "<group>"; };
 		0818D7CA16E4DED900BB30DF /* BWSTRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRConstants.m; sourceTree = "<group>"; };
+		0818D7CC16E4F67B00BB30DF /* BWSTRTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRTest.h; sourceTree = "<group>"; };
+		0818D7CD16E4F67B00BB30DF /* BWSTRTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRTest.m; sourceTree = "<group>"; };
+		0818D7CF16E4FCCD00BB30DF /* BWSTRShapeFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRShapeFactory.h; sourceTree = "<group>"; };
+		0818D7D016E4FCCE00BB30DF /* BWSTRShapeFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRShapeFactory.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,8 +145,12 @@
 				0818D77C16DF929800BB30DF /* BWSTRAppDelegate.m */,
 				0818D78416DF929800BB30DF /* BWSTRViewController.h */,
 				0818D78516DF929800BB30DF /* BWSTRViewController.m */,
+				0818D7CF16E4FCCD00BB30DF /* BWSTRShapeFactory.h */,
+				0818D7D016E4FCCE00BB30DF /* BWSTRShapeFactory.m */,
 				0818D7C716E1427900BB30DF /* BWSTRTestProperties.h */,
 				0818D7C816E1427A00BB30DF /* BWSTRTestProperties.m */,
+				0818D7CC16E4F67B00BB30DF /* BWSTRTest.h */,
+				0818D7CD16E4F67B00BB30DF /* BWSTRTest.m */,
 				0818D7C216E11E1800BB30DF /* BWSTRNewTestViewController.h */,
 				0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */,
 				0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */,
@@ -302,6 +312,8 @@
 				0818D7C416E11E1900BB30DF /* BWSTRNewTestViewController.m in Sources */,
 				0818D7C916E1427B00BB30DF /* BWSTRTestProperties.m in Sources */,
 				0818D7CB16E4DEDA00BB30DF /* BWSTRConstants.m in Sources */,
+				0818D7CE16E4F67C00BB30DF /* BWSTRTest.m in Sources */,
+				0818D7D116E4FCCF00BB30DF /* BWSTRShapeFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

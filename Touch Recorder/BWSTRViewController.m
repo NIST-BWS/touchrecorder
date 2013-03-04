@@ -12,6 +12,7 @@
 #import "BWSTRSquare.h"
 #import "BWSTRDDLog.h"
 #import "BWSTRConstants.h"
+#import "BWSTRTest.h"
 #import "BWSTRTestProperties.h"
 #import "BWSTRNewTestViewController.h"
 
@@ -24,6 +25,7 @@
 @property (nonatomic, strong) NSArray *quadrants;
 @property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
 @property (nonatomic, strong) BWSTRTestProperties *testProperties;
+@property (nonatomic, strong) BWSTRTest *test;
 
 @end
 
@@ -38,22 +40,20 @@ static int ddLogLevel;
 	[super viewWillAppear:animated];
 	
 	/* Setup notifications listeners */
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeHit:) name:kBWSTRNotificationShapeHit object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testPropertiesUpdated:) name:kBWSTRNotificationTestPropertiesSet object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testFinished:) name:kBWSTRNotificationTestFinished object:nil];
 	
 	/* Setup gesture recognizers */
 	if (self.tapGestureRecognizer == nil)
 		self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
 	[self.view addGestureRecognizer:self.tapGestureRecognizer];
-	
-	_testInProgress = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	/* Tear down notification listeners */
-	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationShapeHit object:nil];
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationTestPropertiesSet object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationTestFinished object:nil];
 	
 	/* Tear down gesture recognizers */
 	[self.view removeGestureRecognizer:self.tapGestureRecognizer];
@@ -105,32 +105,38 @@ static int ddLogLevel;
 
 - (IBAction)nextButtonPressed:(id)sender
 {
-	
+	[self.test nextShape];
 }
 
 #pragma mark - Notification Handlers
 
-- (void)shapeHit:(NSNotification *)notification
-{
-
-}
-
 - (void)testPropertiesUpdated:(NSNotification *)notification
 {
+	/* TODO: Don't need a copy of the testProperties in the ViewController. */
 	self.testProperties = [notification.userInfo objectForKey:kBWSTRNotificationTestPropertiesSetTestPropertiesKey];
 	if (self.testProperties == nil) {
 		DDLogBWSTRVerbose(@"%@", @"testProperties is nil, not starting evaluation");
 		return;
 	}
 	
+	/* Set the background color while we're here, so it's not jarring */
+	[self.view setBackgroundColor:self.testProperties.shapeBackgroundColor];
+	
 	/* Start the evaluation */
+	self.test = [[BWSTRTest alloc] initWithTestProperties:self.testProperties inTestViewController:self];
+	[self.test start];
+}
+
+- (void)testFinished:(NSNotification *)notification
+{
+	[self obtainTestProperties];
 }
 
 #pragma mark - Test properties
 
 - (void)obtainTestProperties
 {
-	if (!self.testInProgress) {
+	if (self.test == nil || self.test.inProgress == NO) {
 		BWSTRNewTestViewController *ntvc = [[BWSTRNewTestViewController alloc] initWithNibName:kBWSTRNewTestView bundle:nil];
 		[ntvc setModalPresentationStyle:UIModalPresentationFormSheet];
 		[ntvc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
