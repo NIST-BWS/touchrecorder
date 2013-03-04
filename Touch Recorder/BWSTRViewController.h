@@ -9,19 +9,16 @@
  */
 
 @class BWSTRShape;
+@class BWSTRTestProperties;
 
 #import <UIKit/UIKit.h>
 
 @interface BWSTRViewController : UIViewController
 
-@property (nonatomic, assign) NSUInteger rows;
-@property (nonatomic, assign) NSUInteger columns;
-@property (nonatomic, assign) NSUInteger shapeWidth;
-@property (nonatomic, assign) NSUInteger shapeHeight;
-@property (nonatomic, strong) UIColor *shapeForegroundColor;
-@property (nonatomic, strong) UIColor *shapeBackgroundColor;
+/** Whether or not a test is in progress */
+@property (nonatomic, assign, readonly) BOOL testInProgress;
 
-@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (nonatomic, weak) IBOutlet UIButton *nextButton;
 
 #pragma mark - Shape Insertion
 

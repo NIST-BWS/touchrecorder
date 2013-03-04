@@ -33,6 +33,8 @@
 		0818D7C116E0EF3000BB30DF /* BWSTRSquare.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C016E0EF2F00BB30DF /* BWSTRSquare.m */; };
 		0818D7C416E11E1900BB30DF /* BWSTRNewTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */; };
 		0818D7C616E11E2900BB30DF /* BWSTRNewTestView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */; };
+		0818D7C916E1427B00BB30DF /* BWSTRTestProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7C816E1427A00BB30DF /* BWSTRTestProperties.m */; };
+		0818D7CB16E4DEDA00BB30DF /* BWSTRConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 0818D7CA16E4DED900BB30DF /* BWSTRConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +84,9 @@
 		0818D7C216E11E1800BB30DF /* BWSTRNewTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRNewTestViewController.h; sourceTree = "<group>"; };
 		0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRNewTestViewController.m; sourceTree = "<group>"; };
 		0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BWSTRNewTestView.xib; sourceTree = "<group>"; };
+		0818D7C716E1427900BB30DF /* BWSTRTestProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRTestProperties.h; sourceTree = "<group>"; };
+		0818D7C816E1427A00BB30DF /* BWSTRTestProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRTestProperties.m; sourceTree = "<group>"; };
+		0818D7CA16E4DED900BB30DF /* BWSTRConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +134,13 @@
 			isa = PBXGroup;
 			children = (
 				0818D7AF16DF98B000BB30DF /* BWSTRConstants.h */,
+				0818D7CA16E4DED900BB30DF /* BWSTRConstants.m */,
 				0818D77B16DF929800BB30DF /* BWSTRAppDelegate.h */,
 				0818D77C16DF929800BB30DF /* BWSTRAppDelegate.m */,
 				0818D78416DF929800BB30DF /* BWSTRViewController.h */,
 				0818D78516DF929800BB30DF /* BWSTRViewController.m */,
+				0818D7C716E1427900BB30DF /* BWSTRTestProperties.h */,
+				0818D7C816E1427A00BB30DF /* BWSTRTestProperties.m */,
 				0818D7C216E11E1800BB30DF /* BWSTRNewTestViewController.h */,
 				0818D7C316E11E1900BB30DF /* BWSTRNewTestViewController.m */,
 				0818D7C516E11E2900BB30DF /* BWSTRNewTestView.xib */,
@@ -292,6 +300,8 @@
 				0818D7BE16E0E6B100BB30DF /* UIView+Quadrants.m in Sources */,
 				0818D7C116E0EF3000BB30DF /* BWSTRSquare.m in Sources */,
 				0818D7C416E11E1900BB30DF /* BWSTRNewTestViewController.m in Sources */,
+				0818D7C916E1427B00BB30DF /* BWSTRTestProperties.m in Sources */,
+				0818D7CB16E4DEDA00BB30DF /* BWSTRConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

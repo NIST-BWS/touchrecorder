@@ -12,6 +12,8 @@
 #import "BWSTRSquare.h"
 #import "BWSTRDDLog.h"
 #import "BWSTRConstants.h"
+#import "BWSTRTestProperties.h"
+#import "BWSTRNewTestViewController.h"
 
 #import "NSMutableArray+BWSTRUtilities.h"
 #import "UIView+Quadrants.h"
@@ -20,6 +22,8 @@
 @interface BWSTRViewController ()
 
 @property (nonatomic, strong) NSArray *quadrants;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGestureRecognizer;
+@property (nonatomic, strong) BWSTRTestProperties *testProperties;
 
 @end
 
@@ -27,35 +31,41 @@ static int ddLogLevel;
 
 @implementation BWSTRViewController
 
-- (void)viewDidLoad
-{
-	[super viewDidLoad];
-	[self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)]];
-	
-	self.rows = 4;
-	self.columns = 3;
-	self.shapeBackgroundColor = [UIColor whiteColor];
-	self.shapeForegroundColor = [UIColor greenColor];
-	self.shapeHeight = 50;
-	self.shapeWidth = 50;
-	
-	for (NSUInteger row = 1; row <= self.rows; row++)
-		for (NSUInteger column = 1; column <= self.columns; column++)
-			[self insertShape:[[BWSTRSquare alloc] init] inRow:row column:column];
-}
+#pragma mark - View Lifecycle
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	
+	/* Setup notifications listeners */
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeHit:) name:kBWSTRNotificationShapeHit object:nil];
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(testPropertiesUpdated:) name:kBWSTRNotificationTestPropertiesSet object:nil];
+	
+	/* Setup gesture recognizers */
+	if (self.tapGestureRecognizer == nil)
+		self.tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognized:)];
+	[self.view addGestureRecognizer:self.tapGestureRecognizer];
+	
+	_testInProgress = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
+	/* Tear down notification listeners */
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationShapeHit object:nil];
+	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationTestPropertiesSet object:nil];
+	
+	/* Tear down gesture recognizers */
+	[self.view removeGestureRecognizer:self.tapGestureRecognizer];
 	
 	[super viewWillDisappear:animated];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+	[super viewDidAppear:animated];
+	
+	[self obtainTestProperties];
 }
 
 #pragma mark - Tap Detection
@@ -69,24 +79,25 @@ static int ddLogLevel;
 
 - (void)insertShape:(BWSTRShape *)shape inRow:(NSUInteger)row column:(NSUInteger)column
 {
-	NSAssert(row <= self.rows, @"Invalid row (%u vs %u)", row, self.rows);
-	NSAssert(column <= self.columns, @"Invalid column (%u vs %u)", column, self.columns);
+	NSAssert(row <= self.testProperties.numberOfRows, @"Invalid row (%u vs %u)", row, self.testProperties.numberOfRows);
+	NSAssert(column <= self.testProperties.numberOfColumns, @"Invalid column (%u vs %u)", column, self.testProperties.numberOfColumns);
 
-	[self insertShape:shape inQuadrant:(((row - 1) * self.columns) + (column - 1) + 1)];
+	[self insertShape:shape inQuadrant:(((row - 1) * self.testProperties.numberOfColumns) + (column - 1) + 1)];
 }
 
 - (void)insertShape:(BWSTRShape *)shape inQuadrant:(NSUInteger)quadrantNumber
 {
-	NSAssert(quadrantNumber <= (self.rows * self.columns), @"Invalid quadrant (%u vs %u)", quadrantNumber, (self.rows * self.columns) - 1);
+	NSAssert(quadrantNumber <= (self.testProperties.numberOfRows * self.testProperties.numberOfColumns), @"Invalid quadrant (%u vs %u)", quadrantNumber, (self.testProperties.numberOfRows * self.testProperties.numberOfColumns) - 1);
 	if (self.quadrants == nil)
-		self.quadrants = [self.view quadrantsWithNumberOfRows:self.rows columns:self.columns];
+		self.quadrants = [self.view quadrantsWithNumberOfRows:self.testProperties.numberOfRows columns:self.testProperties.numberOfColumns];
 	
-	[shape setBackgroundColor:self.shapeBackgroundColor];
-	[shape setForegroundColor:self.shapeForegroundColor];
+	[shape setBackgroundColor:self.testProperties.shapeBackgroundColor];
+	[shape setForegroundColor:self.testProperties.shapeForegroundColor];
 	
 	CGRect quadrant = [[self.quadrants objectAtIndex:quadrantNumber - 1] CGRectValue];
-	[shape setFrame:CGRectMake(quadrant.origin.x, quadrant.origin.y, self.shapeWidth, self.shapeHeight)];
+	[shape setFrame:CGRectMake(quadrant.origin.x, quadrant.origin.y, self.testProperties.shapeSize, self.testProperties.shapeSize)];
 	[shape setCenter:CGPointMake(CGRectGetMidX(quadrant), CGRectGetMidY(quadrant))];
+	[shape setNeedsDisplay];
 	[self.view addSubview:shape];
 }
 
@@ -101,7 +112,30 @@ static int ddLogLevel;
 
 - (void)shapeHit:(NSNotification *)notification
 {
+
+}
+
+- (void)testPropertiesUpdated:(NSNotification *)notification
+{
+	self.testProperties = [notification.userInfo objectForKey:kBWSTRNotificationTestPropertiesSetTestPropertiesKey];
+	if (self.testProperties == nil) {
+		DDLogBWSTRVerbose(@"%@", @"testProperties is nil, not starting evaluation");
+		return;
+	}
 	
+	/* Start the evaluation */
+}
+
+#pragma mark - Test properties
+
+- (void)obtainTestProperties
+{
+	if (!self.testInProgress) {
+		BWSTRNewTestViewController *ntvc = [[BWSTRNewTestViewController alloc] initWithNibName:kBWSTRNewTestView bundle:nil];
+		[ntvc setModalPresentationStyle:UIModalPresentationFormSheet];
+		[ntvc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+		[self presentViewController:ntvc animated:YES completion:NULL];
+	}
 }
 
 @end

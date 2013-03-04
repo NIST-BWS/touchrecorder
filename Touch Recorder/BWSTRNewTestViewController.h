@@ -8,8 +8,20 @@
  * about its quality, reliability, or any other characteristic.
  */
 
+@class BWSTRViewController;
+
 #import <UIKit/UIKit.h>
 
-@interface BWSTRNewTestViewController : UIViewController
+@interface BWSTRNewTestViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+
+@property (nonatomic, weak) IBOutlet UITextField *shapeSizeField;
+@property (nonatomic, weak) IBOutlet UISegmentedControl *dominantHand;
+@property (nonatomic, weak) IBOutlet UITextField *numberOfTrialsField;
+@property (nonatomic, weak) IBOutlet UITextField *rowsField;
+@property (nonatomic, weak) IBOutlet UITextField *columnsField;
+@property (nonatomic, weak) IBOutlet UITextField *participantIDField;
+@property (nonatomic, weak) IBOutlet UIPickerView *shapePicker;
+
+- (IBAction)startButtonPressed:(id)sender;
 
 @end
