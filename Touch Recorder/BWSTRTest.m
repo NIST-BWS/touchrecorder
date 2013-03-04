@@ -110,7 +110,7 @@ static int ddLogLevel;
 	DDLogBWSTRVerbose(@"%@", @"--------------------------------------------------------------------------------");
 	
 	_inProgress = NO;
-	[[self.testViewController nextButton] setHidden:NO];
+	[[self.testViewController nextButton] setHidden:YES];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationTestFinished object:nil];	
 }
