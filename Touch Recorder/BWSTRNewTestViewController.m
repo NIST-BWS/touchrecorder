@@ -109,6 +109,8 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 	for (NSUInteger i = 0; i < kBWSTRColorCount; i++)
 		[colors addObject:[BWSTRConstants attributedStringForColor:i]];
 	self.possibleColors = [[NSArray alloc] initWithArray:colors];
+	
+	[self.shapePicker selectRow:2 inComponent:kBWSTRShapePickerViewSectionForegroundColor animated:NO];
 }
 
 #pragma mark - Actions
