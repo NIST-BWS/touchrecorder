@@ -159,6 +159,9 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 	if ((([self.rowsField.text integerValue] * [self.columnsField.text integerValue]) % [self.numberOfTrialsField.text integerValue]) != 0)
 	      return (NSLocalizedString(@"Number of trials must be a multiple of the number of quadrants.", nil));
 	
+	if ([self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionBackgroundColor] == [self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor])
+		return (NSLocalizedString(@"Foreground and background colors are the same", nil));
+	
 	return (nil);
 }
 
