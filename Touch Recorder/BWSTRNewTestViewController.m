@@ -9,6 +9,7 @@
  */
 
 #import "BWSTRConstants.h"
+#import "BWSTRShapeFactory.h"
 #import "BWSTRTestProperties.h"
 #import "BWSTRViewController.h"
 
@@ -67,29 +68,39 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 
 #pragma mark - PickerView Delegate
 
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
 	switch (component) {
-		case kBWSTRShapePickerViewSectionShape:
-			return (([BWSTRConstants stringForShapeName:row]));
+		case kBWSTRShapePickerViewSectionShape: {
+			BWSTRShape *shape = [BWSTRShapeFactory shapeWithShapeName:row frame:CGRectMake(0, 0, 30, 30)];
+			shape.foregroundColor = [BWSTRConstants colorForBWSTRColor:[pickerView selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor]];
+			shape.backgroundColor = [BWSTRConstants colorForBWSTRColor:[pickerView selectedRowInComponent:kBWSTRShapePickerViewSectionBackgroundColor]];
+			UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
+			[shape setCenter:CGPointMake(CGRectGetMidX(containerView.frame), CGRectGetMidY(containerView.frame))];
+			containerView.backgroundColor = shape.backgroundColor;
+			[containerView addSubview:shape];
+			return (containerView);
+		}
 		case kBWSTRShapePickerViewSectionForegroundColor:
 			/* FALLTHROUGH */
 		case kBWSTRShapePickerViewSectionBackgroundColor:
-			return ([BWSTRConstants stringForColor:row]);
+			if (view == nil)
+				view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+			[view setBackgroundColor:[BWSTRConstants colorForBWSTRColor:row]];
+			return (view);
 		default:
 			return (nil);
 	}
 }
 
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
 	switch (component) {
 		case kBWSTRShapePickerViewSectionForegroundColor:
 			/* FALLTHROUGH */
 		case kBWSTRShapePickerViewSectionBackgroundColor:
-			return ([BWSTRConstants attributedStringForColor:row]);
-		default:
-			return (nil);
+			[pickerView reloadComponent:kBWSTRShapePickerViewSectionShape];
+			break;
 	}
 }
 
@@ -110,7 +121,15 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 		[colors addObject:[BWSTRConstants attributedStringForColor:i]];
 	self.possibleColors = [[NSArray alloc] initWithArray:colors];
 	
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	
+	/* Redraw the shapes with color */
 	[self.shapePicker selectRow:2 inComponent:kBWSTRShapePickerViewSectionForegroundColor animated:NO];
+	[self.shapePicker reloadComponent:kBWSTRShapePickerViewSectionShape];
 }
 
 #pragma mark - Actions
