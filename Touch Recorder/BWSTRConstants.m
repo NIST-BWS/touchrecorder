@@ -65,7 +65,8 @@
 {
 	switch (color) {
 		case kBWSTRColorBlack:
-			return ([UIColor blackColor]);
+			/* Force RGB colorspace */
+			return ([UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0]);
 		case kBWSTRColorBlue:
 			return ([UIColor blueColor]);
 		case kBWSTRColorGreen:
@@ -73,7 +74,8 @@
 		case kBWSTRColorRed:
 			return ([UIColor redColor]);
 		case kBWSTRColorWhite:
-			return ([UIColor whiteColor]);
+			/* Force RGB colorspace */
+			return ([UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0]);
 		case kBWSTRColorYellow:
 			return ([UIColor yellowColor]);
 		case kBWSTRColorCount:
