@@ -31,7 +31,9 @@
 	CGContextDrawPath(context, kCGPathFillStroke);
 	
 	/* Save this context to an image for location testing */
-	self.backingImage = [UIImage imageWithCGImage:CGBitmapContextCreateImage(context)];
+	CGImageRef backingCGImage = CGBitmapContextCreateImage(context);
+	self.backingImage = [UIImage imageWithCGImage:backingCGImage];
+	CGImageRelease(backingCGImage);
 }
 
 @end
