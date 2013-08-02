@@ -22,7 +22,7 @@
 	return (self);
 }
 
-+ (NSMutableArray *)numberArrayWithStartingNumber:(NSInteger)startingNumber endingNumber:(NSInteger)endingNumber;
++ (NSMutableArray *)numberArrayWithStartingNumber:(NSInteger)startingNumber endingNumber:(NSInteger)endingNumber
 {
 	NSAssert(startingNumber <= endingNumber, @"Starting number (%d) is greater than ending number (%d)", startingNumber, endingNumber);
 	return ([NSMutableArray numberArrayWithStartingNumber:startingNumber increment:1 iterations:(endingNumber - startingNumber + 1)]);
