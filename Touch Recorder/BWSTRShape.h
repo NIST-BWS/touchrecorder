@@ -23,6 +23,7 @@ typedef struct
 @property (nonatomic, strong) UIColor *backgroundColor;
 @property (nonatomic, strong) UIColor *foregroundColor;
 @property (nonatomic, strong) UIImage *backingImage;
+@property (nonatomic, assign) CGPoint tappedPoint;
 
 - (BOOL)touchedWithinShapeWithTouch:(CGPoint)touchPoint;
 

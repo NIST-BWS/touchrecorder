@@ -10,6 +10,7 @@
 
 #import "BWSTRCircle.h"
 #import "BWSTRSquare.h"
+#import "BWSTRRectangular.h"
 
 #import "BWSTRShapeFactory.h"
 
@@ -27,6 +28,8 @@
 			return ([[BWSTRCircle alloc] initWithFrame:frame]);
 		case kBWSTRShapeSquare:
 			return ([[BWSTRSquare alloc] initWithFrame:frame]);
+        case kBWSTRShapeRectangular:
+            return ([[BWSTRRectangular alloc] initWithFrame:frame]);
 		case kBWSTRShapeCount:
 			NSAssert(YES == NO, @"Cannot instantate a shape with kBWSTRShapeCount");
 			/* Not reached */

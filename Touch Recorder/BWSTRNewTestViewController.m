@@ -17,10 +17,10 @@
 
 @interface BWSTRNewTestViewController ()
 
-/** 
+/**
  * @brief
  * Validate form fields.
- * 
+ *
  * @return
  *	Error messages dealing with invalid fields or nil if there are no
  *	errors.
@@ -72,10 +72,18 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 {
 	switch (component) {
 		case kBWSTRShapePickerViewSectionShape: {
-			BWSTRShape *shape = [BWSTRShapeFactory shapeWithShapeName:row frame:CGRectMake(0, 0, 30, 30)];
+            //Kayee - if rectangular, need to give a different dimension
+            BWSTRShape *shape = [BWSTRShapeFactory shapeWithShapeName:row frame:CGRectMake(0, 0, 30, 30)];
+            if (row == 2)
+                shape = [BWSTRShapeFactory shapeWithShapeName:row frame:CGRectMake(0, 0, 70, 30)];
+			
 			shape.foregroundColor = [BWSTRConstants colorForBWSTRColor:[pickerView selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor]];
 			shape.backgroundColor = [BWSTRConstants colorForBWSTRColor:[pickerView selectedRowInComponent:kBWSTRShapePickerViewSectionBackgroundColor]];
 			UIView *containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
+            //Kayee - if rectangular, need to give a different dimension
+            if(row ==2)
+                containerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 77, 37)];
+            
 			[shape setCenter:CGPointMake(CGRectGetMidX(containerView.frame), CGRectGetMidY(containerView.frame))];
 			containerView.backgroundColor = shape.backgroundColor;
 			[containerView addSubview:shape];
@@ -115,7 +123,7 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 	for (NSUInteger i = 0; i < kBWSTRShapeCount; i++)
 		[shapes addObject:[BWSTRConstants stringForShapeName:i]];
 	self.possibleShapes = [[NSArray alloc] initWithArray:shapes];
-		
+    
 	NSMutableArray *colors = [[NSMutableArray alloc] initWithCapacity:kBWSTRColorCount];
 	for (NSUInteger i = 0; i < kBWSTRColorCount; i++)
 		[colors addObject:[BWSTRConstants attributedStringForColor:i]];
@@ -135,14 +143,14 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 #pragma mark - Actions
 
 - (IBAction)startButtonPressed:(id)sender
-{	
+{
 	NSString *resultString = [self validate];
 	if (resultString != nil) {
 		[[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", nil)
-					    message:resultString
-					   delegate:nil
-				  cancelButtonTitle:NSLocalizedString(@"Okay", nil)
-				  otherButtonTitles:nil]
+                                    message:resultString
+                                   delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"Okay", nil)
+                          otherButtonTitles:nil]
 		 show];
 		return;
 	}
@@ -159,8 +167,8 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 	testProperties.shapeForegroundColor = [self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationTestPropertiesSet
-							    object:self
-							  userInfo:@{kBWSTRNotificationTestPropertiesSetTestPropertiesKey : testProperties}];
+                                                        object:self
+                                                      userInfo:@{kBWSTRNotificationTestPropertiesSetTestPropertiesKey : testProperties}];
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 
@@ -176,9 +184,10 @@ typedef NS_ENUM(NSUInteger, kBWSTRShapePickerViewSections)
 		return (NSLocalizedString(@"Number of columns is <= 0.", nil));
 	if ([self.shapeSizeField.text isEqualToString:@""] || [self.shapeSizeField.text integerValue] <= 0)
 		return (NSLocalizedString(@"Shape size is 0.", nil));
+    
 	
-	if ((([self.rowsField.text integerValue] * [self.columnsField.text integerValue]) % [self.numberOfTrialsField.text integerValue]) != 0)
-	      return (NSLocalizedString(@"Number of trials must be a multiple of the number of quadrants.", nil));
+	if (([self.numberOfTrialsField.text integerValue]) % ([self.rowsField.text integerValue] * [self.columnsField.text integerValue]) != 0)
+        return (NSLocalizedString(@"Number of trials must be a multiple of @%d the number of quadrants.", self.numberOfTrialsField.text));
 	
 	if ([self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionBackgroundColor] == [self.shapePicker selectedRowInComponent:kBWSTRShapePickerViewSectionForegroundColor])
 		return (NSLocalizedString(@"Foreground and background colors are the same", nil));

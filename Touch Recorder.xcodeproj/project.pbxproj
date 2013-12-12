@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044FDE18185A3EA100C9C947 /* BWSTRRectangular.m in Sources */ = {isa = PBXBuildFile; fileRef = 044FDE17185A3EA100C9C947 /* BWSTRRectangular.m */; };
 		0818D76D16DF929800BB30DF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0818D76C16DF929800BB30DF /* UIKit.framework */; };
 		0818D76F16DF929800BB30DF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0818D76E16DF929800BB30DF /* Foundation.framework */; };
 		0818D77116DF929800BB30DF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0818D77016DF929800BB30DF /* CoreGraphics.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044FDE16185A3EA100C9C947 /* BWSTRRectangular.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWSTRRectangular.h; sourceTree = "<group>"; };
+		044FDE17185A3EA100C9C947 /* BWSTRRectangular.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWSTRRectangular.m; sourceTree = "<group>"; };
 		0818D76916DF929800BB30DF /* Touch Recorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Touch Recorder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0818D76C16DF929800BB30DF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0818D76E16DF929800BB30DF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -139,6 +142,8 @@
 		0818D77216DF929800BB30DF /* Touch Recorder */ = {
 			isa = PBXGroup;
 			children = (
+				044FDE16185A3EA100C9C947 /* BWSTRRectangular.h */,
+				044FDE17185A3EA100C9C947 /* BWSTRRectangular.m */,
 				0818D7AF16DF98B000BB30DF /* BWSTRConstants.h */,
 				0818D7CA16E4DED900BB30DF /* BWSTRConstants.m */,
 				0818D77B16DF929800BB30DF /* BWSTRAppDelegate.h */,
@@ -314,6 +319,7 @@
 				0818D7CB16E4DEDA00BB30DF /* BWSTRConstants.m in Sources */,
 				0818D7CE16E4F67C00BB30DF /* BWSTRTest.m in Sources */,
 				0818D7D116E4FCCF00BB30DF /* BWSTRShapeFactory.m in Sources */,
+				044FDE18185A3EA100C9C947 /* BWSTRRectangular.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,6 +446,7 @@
 				0818D78E16DF929800BB30DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

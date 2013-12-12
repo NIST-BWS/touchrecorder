@@ -55,9 +55,12 @@ static int ddLogLevel;
 - (void)tapped:(UITapGestureRecognizer *)tapRecognizer
 {
 	BOOL tappedWithin = [self touchedWithinShapeWithTouch:[tapRecognizer locationInView:self]];
-	DDLogBWSTRTouchLGHM([tapRecognizer locationInView:self], tappedWithin);
+    _tappedPoint = [tapRecognizer locationInView:self];
+    //DDLogBWSTRTouchLGHM(self.tappedPoint, tappedWithin);
+	//DDLogBWSTRTouchLGHM([tapRecognizer locationInView:self], tappedWithin);
 	if (tappedWithin)
 		[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationShapeHit object:nil];
+    
 }
 
 @end

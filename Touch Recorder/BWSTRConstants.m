@@ -19,6 +19,8 @@
 			return (NSLocalizedString(@"Circle", nil));
 		case kBWSTRShapeSquare:
 			return (NSLocalizedString(@"Square", nil));
+        case kBWSTRShapeRectangular:
+            return (NSLocalizedString(@"Rectangular", nil));
 			
 		case kBWSTRShapeCount:
 			NSAssert(YES == NO, @"Cannot use kBWSTRShapeCount as a shape");

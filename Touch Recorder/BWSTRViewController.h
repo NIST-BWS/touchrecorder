@@ -16,6 +16,7 @@
 @interface BWSTRViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIButton *nextButton;
+@property (nonatomic, assign) double sessionStartTime;
 
 #pragma mark - Shape Insertion
 
@@ -33,7 +34,7 @@
 /**
  * @brief
  * Draw shape in a quadrant.
- * 
+ *
  * @param shape
  *	Shape to draw.
  * @param row

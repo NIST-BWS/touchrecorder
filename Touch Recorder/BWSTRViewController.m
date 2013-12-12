@@ -10,6 +10,7 @@
 
 #import "BWSTRCircle.h"
 #import "BWSTRSquare.h"
+#import "BWSTRRectangular.h"
 #import "BWSTRDDLog.h"
 #import "BWSTRConstants.h"
 #import "BWSTRTest.h"
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) UITapGestureRecognizer *nextButtonTapRecognizer;
 @property (nonatomic, strong) BWSTRTestProperties *testProperties;
 @property (nonatomic, strong) BWSTRTest *test;
+//@property (nonatomic, assign, readonly) double sessionStartTime; //in milliseconds
 
 @end
 
@@ -81,12 +83,15 @@ static int ddLogLevel;
 
 - (void)backgroundTapRecognized:(UITapGestureRecognizer *)recognizer
 {
-	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: No", NSStringFromCGPoint([recognizer locationInView:self.view]), NSStringFromCGPoint([recognizer locationInView:self.view]));
+    [[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationShapeMiss object:nil];
+    
+	//DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: No", NSStringFromCGPoint([recognizer locationInView:self.nextButton]), NSStringFromCGPoint([recognizer locationInView:self.view]));
+    
 }
 
 - (void)nextButtonTapRecognized:(UITapGestureRecognizer *)recognizer
 {
-	DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: NEXT", NSStringFromCGPoint([recognizer locationInView:self.nextButton]), NSStringFromCGPoint([recognizer locationInView:self.view]));
+	//DDLogBWSTRTouch(@"Local: %@, Global: %@, Hit: NEXT", NSStringFromCGPoint([recognizer locationInView:self.nextButton]), NSStringFromCGPoint([recognizer locationInView:self.view]));
 }
 
 #pragma mark - Shape Insertion
@@ -95,7 +100,7 @@ static int ddLogLevel;
 {
 	NSAssert(row <= self.testProperties.numberOfRows, @"Invalid row (%u vs %u)", row, self.testProperties.numberOfRows);
 	NSAssert(column <= self.testProperties.numberOfColumns, @"Invalid column (%u vs %u)", column, self.testProperties.numberOfColumns);
-
+    
 	[self insertShape:shape inQuadrant:(((row - 1) * self.testProperties.numberOfColumns) + (column - 1) + 1)];
 }
 
@@ -109,7 +114,11 @@ static int ddLogLevel;
 	[shape setForegroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeForegroundColor]];
 	
 	CGRect quadrant = [[self.quadrants objectAtIndex:quadrantNumber - 1] CGRectValue];
-	[shape setFrame:CGRectMake(quadrant.origin.x, quadrant.origin.y, self.testProperties.shapeSize, self.testProperties.shapeSize)];
+    //Kayee - If it is rectangular need to change dimension
+    if (self.testProperties.shapeName == kBWSTRShapeRectangular)
+        [shape setFrame:CGRectMake(quadrant.origin.x, quadrant.origin.y, self.testProperties.shapeSize + 40 , self.testProperties.shapeSize)];
+    else
+        [shape setFrame:CGRectMake(quadrant.origin.x, quadrant.origin.y, self.testProperties.shapeSize, self.testProperties.shapeSize)];
 	[shape setCenter:CGPointMake(CGRectGetMidX(quadrant), CGRectGetMidY(quadrant))];
 	[shape setNeedsDisplay];
 	[self.view addSubview:shape];
@@ -119,6 +128,8 @@ static int ddLogLevel;
 
 - (IBAction)nextButtonPressed:(id)sender
 {
+    self.sessionStartTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    
 	[self.test nextShape];
 }
 
@@ -140,6 +151,7 @@ static int ddLogLevel;
 	
 	/* Start the evaluation */
 	self.test = [[BWSTRTest alloc] initWithTestProperties:self.testProperties inTestViewController:self];
+    
 	[self.test start];
 }
 
@@ -158,6 +170,12 @@ static int ddLogLevel;
 		[ntvc setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
 		[self presentViewController:ntvc animated:YES completion:NULL];
 	}
+}
+
+-(void) dealloc
+{
+    /* kayee */
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationShapeMiss object:nil];
 }
 
 @end

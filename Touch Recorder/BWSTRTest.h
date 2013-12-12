@@ -20,6 +20,7 @@
 @property (nonatomic, assign, readonly) NSUInteger iteration;
 @property (nonatomic, assign, readonly) NSUInteger inProgress;
 @property (nonatomic, strong, readonly) BWSTRTestProperties *testProperties;
+@property (nonatomic, assign, readonly)double sessionEndTime;
 
 - (BWSTRTest *)initWithTestProperties:(BWSTRTestProperties *)testProperties inTestViewController:(BWSTRViewController *)testViewController;
 

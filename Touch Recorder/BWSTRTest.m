@@ -26,6 +26,8 @@ static int ddLogLevel;
 @property (nonatomic, assign, readonly) BWSTRViewController *testViewController;
 /** Shared shape object */
 @property (nonatomic, strong, readonly) BWSTRShape *shape;
+/** Kayee - adding timestamp session when session end (session end when shape hit or miss) in milliseconds */
+//@property (nonatomic, assign, readwrite)double sessionEndTime;
 
 @end
 
@@ -50,7 +52,7 @@ static int ddLogLevel;
 	
 	/* Initialize the shape object */
 	_shape = [BWSTRShapeFactory shapeWithShapeName:self.testProperties.shapeName
-						 frame:CGRectMake(0, 0, self.testProperties.shapeSize, self.testProperties.shapeSize)];
+                                             frame:CGRectMake(0, 0, self.testProperties.shapeSize, self.testProperties.shapeSize)];
 	[_shape setForegroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeForegroundColor]];
 	[_shape setBackgroundColor:[BWSTRConstants colorForBWSTRColor:self.testProperties.shapeBackgroundColor]];
 	
@@ -60,6 +62,9 @@ static int ddLogLevel;
 	/* Listen for hitting shapes */
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeHit:) name:kBWSTRNotificationShapeHit object:nil];
 	
+    /* Listen for hit miss - Kayee */
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shapeMiss:) name:kBWSTRNotificationShapeMiss object:nil];
+    
 	return (self);
 }
 
@@ -98,7 +103,7 @@ static int ddLogLevel;
 	
 	/* Show a shape */
 	NSNumber *nextQuadrant = self.quadrantOrder[_iteration - 1];
-	DDLogBWSTRVerbose(@"Displaying %@ in quadrant %u", [BWSTRConstants stringForShapeName:self.testProperties.shapeName], [nextQuadrant unsignedIntegerValue]);
+	//DDLogBWSTRVerbose(@"Displaying %@ in quadrant %u", [BWSTRConstants stringForShapeName:self.testProperties.shapeName], [nextQuadrant unsignedIntegerValue]);
 	if (_iteration != 1)
 		[self.shape removeFromSuperview];
 	[self.testViewController insertShape:self.shape inQuadrant:[nextQuadrant unsignedIntegerValue]];
@@ -113,14 +118,47 @@ static int ddLogLevel;
 	_inProgress = NO;
 	[[self.testViewController nextButton] setHidden:YES];
 	
-	[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationTestFinished object:nil];	
+	[[NSNotificationCenter defaultCenter] postNotificationName:kBWSTRNotificationTestFinished object:nil];
 }
 
 #pragma mark - Notifications
 
-- (void)shapeHit:(NSNotification *)notificaiton
+- (void)shapeHit:(NSNotification *)notification
 {
-	/* Hide the shape */
+    
+    _sessionEndTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    
+    DDLogBWSTRTouch(@"%d,%d,%f,%f,%d,tDis,1,%@", self.iteration, [self.testProperties participantID], [self.testViewController sessionStartTime], [self sessionEndTime], [self.testProperties shapeSize],NSStringFromCGPoint(self.shape.tappedPoint));
+    [self removeShape];
+    //	/* Hide the shape */
+    //	[self.shape removeFromSuperview];
+    //
+    //	/* Show the next button */
+    //	[[self.testViewController nextButton] setTitle:NSLocalizedString(@"Next", nil) forState:UIControlStateNormal];
+    //	[[self.testViewController nextButton] setFrame:[self buttonPosition]];
+    //	[[self.testViewController nextButton] setHidden:NO];
+}
+
+/* kayee */
+- (void)shapeMiss:(NSNotification *)notification
+{
+    _sessionEndTime = [[NSDate date] timeIntervalSince1970] * 1000;
+    
+    DDLogBWSTRTouch(@"%d,%d,%f,%f,%d,tDis,0,%@", self.iteration, [self.testProperties participantID], [self.testViewController sessionStartTime], [self sessionEndTime], [self.testProperties shapeSize],NSStringFromCGPoint(self.shape.tappedPoint));
+    //[self removeShape self.iteration startTime:self.testProperties.participantID];
+    [self removeShape];
+    //    /* Hide the shape */
+    //	[self.shape removeFromSuperview];
+    //
+    //	/* Show the next button */
+    //	[[self.testViewController nextButton] setTitle:NSLocalizedString(@"Next", nil) forState:UIControlStateNormal];
+    //	[[self.testViewController nextButton] setFrame:[self buttonPosition]];
+    //	[[self.testViewController nextButton] setHidden:NO];
+}
+
+//- (void) removeShape: (NSInteger)participantID startTime:(double)sessionStartTime endTime:(double)sessionEndTime size:(NSInteger)shapeSize tapLocation:(NSString *)tappedPoint
+- (void) removeShape{
+    /* Hide the shape */
 	[self.shape removeFromSuperview];
 	
 	/* Show the next button */
@@ -128,6 +166,7 @@ static int ddLogLevel;
 	[[self.testViewController nextButton] setFrame:[self buttonPosition]];
 	[[self.testViewController nextButton] setHidden:NO];
 }
+
 
 #pragma mark - Test Mechanics
 
@@ -138,7 +177,7 @@ static int ddLogLevel;
 	NSMutableArray *randomization = [[NSMutableArray alloc] initWithCapacity:self.testProperties.numberOfTrials];
 	for (NSUInteger i = 0; i < self.testProperties.numberOfTrials / [quadrants count]; i++)
 		[randomization addObjectsFromArray:quadrants];
-
+    
 	_quadrantOrder = [[NSArray alloc] initWithArray:[randomization shuffle]];
 }
 
@@ -154,8 +193,8 @@ static int ddLogLevel;
 		case kBWSTRDominantHandBoth:
 			/* Alternate */
 			return ((_iteration % 2 == 0) ?
-				CGRectMake(padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)) :
-				CGRectMake(CGRectGetWidth(self.testViewController.view.frame) - CGRectGetWidth(self.testViewController.nextButton.frame) - padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)));
+                    CGRectMake(padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)) :
+                    CGRectMake(CGRectGetWidth(self.testViewController.view.frame) - CGRectGetWidth(self.testViewController.nextButton.frame) - padding, CGRectGetHeight(self.testViewController.view.frame) - CGRectGetHeight(self.testViewController.nextButton.frame) - padding, CGRectGetWidth(self.testViewController.nextButton.frame), CGRectGetHeight(self.testViewController.nextButton.frame)));
 	}
 }
 
@@ -164,6 +203,7 @@ static int ddLogLevel;
 - (void)dealloc
 {
 	[[NSNotificationCenter defaultCenter] removeObserver:self name:kBWSTRNotificationShapeHit object:nil];
+    
 }
 
 @end

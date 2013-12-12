@@ -42,6 +42,8 @@ static NSString * const kBWSTRNewTestView = @"BWSTRNewTestView";
 
 /** A shape was touched inside its bounds */
 static NSString * const kBWSTRNotificationShapeHit = @"kBWSTRNotificationShapeHit";
+/** Background was touched - Kayee */
+static NSString * const kBWSTRNotificationShapeMiss = @"kBWSTRNotificationShapeMiss";
 /** Test properties have been set and are attached */
 static NSString * const kBWSTRNotificationTestPropertiesSet = @"kBWSTRNotificationTestPropertiesSet";
 /** Test is finished */
@@ -74,6 +76,7 @@ typedef NS_ENUM(NSUInteger, BWSTRShapeName)
 {
 	kBWSTRShapeCircle,
 	kBWSTRShapeSquare,
+    kBWSTRShapeRectangular,
 	
 	kBWSTRShapeCount
 };
